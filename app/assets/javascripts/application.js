@@ -63,7 +63,8 @@
         });
 
         /**
-         * Date picker
+         * Accessible Datepicker v2.1.5
+         * https://github.com/eureka2/ab-datepicker
          */
         $('.date-picker').datepicker({
             weekDayFormat: 'narrow',

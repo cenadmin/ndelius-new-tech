@@ -47,6 +47,7 @@ public class ShortFormatPreSentenceReportData extends WizardData {
     @JsonProperty("_COURT_")
     private String court;
 
+    // TODO: Validate for DD/MM/YYYY format
     @RequiredOnPage(2)
     @JsonProperty("_DATE_OF_HEARING_")
     private String dateOfHearing;
@@ -186,6 +187,7 @@ public class ShortFormatPreSentenceReportData extends WizardData {
     @JsonProperty("OFFICE")
     private String office;
 
+    // TODO: Validate for DD/MM/YYYY format
     @JsonProperty("REPORT_DATE")
     private String reportDate;
 
@@ -195,7 +197,7 @@ public class ShortFormatPreSentenceReportData extends WizardData {
 
         if (Strings.isNullOrEmpty(reportDate)) { // Fill in for the first read only page, then keep any user changes
 
-            reportDate = new SimpleDateFormat("dd MMMM yyy").format(new Date());
+            reportDate = new SimpleDateFormat("dd/MM/yyy").format(new Date());
         }
 
         return super.validate();
