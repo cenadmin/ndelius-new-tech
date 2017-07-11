@@ -26,10 +26,14 @@
 
             if (over) {
                 targetUnder.addClass('js-hidden');
+                targetUnder.attr('aria-hidden', 'true');
                 targetOver.removeClass('js-hidden');
+                targetOver.attr('aria-hidden', 'false');
             } else {
                 targetUnder.removeClass('js-hidden');
+                targetUnder.attr('aria-hidden', 'false');
                 targetOver.addClass('js-hidden');
+                targetOver.attr('aria-hidden', 'true');
             }
         }
 
