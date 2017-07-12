@@ -3,7 +3,7 @@
 $path: "/assets/images/";
 
 // Import all the govuk-elements partials listed in _govuk-elements.scss
-@import "govuk-elements";
+@import "govuk/govuk-elements";
 
 // Import the project specific styles
 @import "project/box";
@@ -14,4 +14,4 @@ $path: "/assets/images/";
 @import "project/navigation";
 @import "project/spacing";
 @import "project/utils";
-@import "project/widgets";
+@import "project/date-picker";
