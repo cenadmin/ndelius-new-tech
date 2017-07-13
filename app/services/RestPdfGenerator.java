@@ -1,11 +1,11 @@
 package services;
 
 import com.google.common.collect.ImmutableMap;
+import com.typesafe.config.Config;
 import interfaces.PdfGenerator;
 import java.util.concurrent.CompletionStage;
 import javax.inject.Inject;
 import lombok.val;
-import play.Configuration;
 import play.Logger;
 import play.libs.Json;
 import play.libs.ws.WSClient;
@@ -16,7 +16,7 @@ public class RestPdfGenerator implements PdfGenerator {
     private final WSClient wsClient;
 
     @Inject
-    public RestPdfGenerator(Configuration configuration, WSClient wsClient) {
+    public RestPdfGenerator(Config configuration, WSClient wsClient) {
 
         pdfGeneratorUrl = configuration.getString("pdf.generator.url");
         this.wsClient = wsClient;
