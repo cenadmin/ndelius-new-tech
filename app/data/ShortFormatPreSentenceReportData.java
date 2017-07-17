@@ -3,6 +3,7 @@ package data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Strings;
+import data.annotations.Encrypted;
 import data.annotations.OnPage;
 import data.annotations.RequiredOnPage;
 import data.annotations.SpellCheck;
@@ -18,40 +19,57 @@ import play.data.validation.ValidationError;
 @EqualsAndHashCode(callSuper=false)
 public class ShortFormatPreSentenceReportData extends WizardData {
 
+    @Encrypted
+    @RequiredOnPage(1)
+    @JsonIgnore
+    private String onBehalfOfUser;
+
+
+    @Encrypted
     @RequiredOnPage(1)
     @JsonProperty("_NAME_")
     private String name;
 
+    @Encrypted
     @RequiredOnPage(1)
     @JsonProperty("_DATE_OF_BIRTH_")
     private String dateOfBirth;
 
+    @Encrypted
     @RequiredOnPage(1)
     @JsonProperty("_AGE_")
     private Integer age;
 
+    @Encrypted
     @RequiredOnPage(1)
     @JsonProperty("_ADDRESS_")
     private String address;
 
+    @Encrypted
     @RequiredOnPage(1)
     @JsonProperty("_DELIUS_CRN_")
     private String crn;
 
+    @Encrypted
     @OnPage(1)
     @JsonProperty("_PNC_ID_")
     private String pnc;
 
+    @JsonIgnore
+    private boolean pncSupplied;
 
+
+    @Encrypted
     @RequiredOnPage(2)
     @JsonProperty("_COURT_")
     private String court;
 
-    // TODO: Validate for DD/MM/YYYY format
+    @Encrypted
     @RequiredOnPage(2)
     @JsonProperty("_DATE_OF_HEARING_")
     private String dateOfHearing;
 
+    @Encrypted
     @RequiredOnPage(2)
     @JsonProperty("_LOCAL_JUSTICE_AREA_")
     private String localJusticeArea;
@@ -187,7 +205,6 @@ public class ShortFormatPreSentenceReportData extends WizardData {
     @JsonProperty("OFFICE")
     private String office;
 
-    // TODO: Validate for DD/MM/YYYY format
     @JsonProperty("REPORT_DATE")
     private String reportDate;
 
@@ -197,7 +214,7 @@ public class ShortFormatPreSentenceReportData extends WizardData {
 
         if (Strings.isNullOrEmpty(reportDate)) { // Fill in for the first read only page, then keep any user changes
 
-            reportDate = new SimpleDateFormat("dd/MM/yyy").format(new Date());
+            reportDate = new SimpleDateFormat("dd MMMM yyy").format(new Date());
         }
 
         return super.validate();
