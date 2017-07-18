@@ -2,17 +2,16 @@ version: 2
 
 jobs:
     build:
-        working_directory: ~/pdf-generator
+        working_directory: ~/ndelius-new-tech
         docker:
             - image: openjdk:8
         steps:
             - checkout
             - setup_remote_docker
             - run:
-                name: Install sbt into build container
+                name: Install node and sbt into build container
                 command: |
                     apt-get update
-                    apt-get install -y curl
                     curl -sL https://deb.nodesource.com/setup_6.x | bash -
                     apt-get install -y nodejs
                     curl -L https://www.npmjs.com/install.sh | sh
