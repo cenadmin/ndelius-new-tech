@@ -1,13 +1,12 @@
-@import data._
 @import helper._
 
 @(message: String, pdfBase64: String)
 
 <!-- TODO: This should be removed when the iframe is no longer required -->
 <style type="text/css">
-        body, html {
-            height: 100%;
-        }
+    body, html {
+        height: 100%;
+    }
 </style>
 
 @main("Report complete - Short Format Pre Sentence Report", false) {
@@ -27,32 +26,26 @@
 
     <input class="button" type="submit" value="Finished"/>
 
-    <!-- TODO: This will not be required when integrated with nDelius -->
+        <!-- TODO: This will not be required when integrated with nDelius -->
     <div class="iframe-container margin-top medium">
         <iframe></iframe>
     </div>
 
     <script type="text/javascript">
-        (function ($) {
+        $(function () {
 
-            'use strict';
-
-            $(function () {
-
-                $('input').click(function () {
-                    parent.postMessage('@message', '*');
-                });
-
-                var pdfBytes = Uint8Array.from(atob('@pdfBase64'), function (c) {
-                            return c.charCodeAt(0);
-                        }),
-                        pdfBlob = new Blob([pdfBytes], {type: 'application/pdf'}),
-                        pdfUrl = URL.createObjectURL(pdfBlob);
-
-                $('iframe').attr('src', pdfUrl);
-
+            $('input').click(function () {
+                parent.postMessage('@message', '*');
             });
 
-        })(window.jQuery);
+            if(window.Uint8Array) { // Won't work in IE8/IE9, will work in all other browsers. Don't display PDF result in IE8/IE9
+
+                var pdfBytes = Uint8Array.from(atob('@pdfBase64'), function (c) { return c.charCodeAt(0); });
+                var pdfBlob = new Blob([pdfBytes], {type: 'application/pdf'});
+                var pdfUrl = URL.createObjectURL(pdfBlob);
+
+                $('iframe').attr('src', pdfUrl);
+            }
+        });
     </script>
 }
