@@ -15,7 +15,7 @@
 
       <p>Please check and confirm that these details are correct.</p>
 
-      @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'novalidate -> "") {
+      @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField
 
         @inputHidden(reportForm("onBehalfOfUser"), encrypter)

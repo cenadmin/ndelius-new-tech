@@ -13,7 +13,7 @@
 
       <h2 class="heading-large no-margin-top">Offence Details</h2>
 
-      @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'novalidate -> "") {
+      @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField
 
         @inputHidden(reportForm("onBehalfOfUser"), encrypter)
