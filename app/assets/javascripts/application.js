@@ -11,11 +11,6 @@
         // Stick at top when scrolling
         GOVUK.stickAtTopWhenScrolling.init();
 
-        // Autosize all Textarea elements (does not support IE8).
-        if (!$('html').is('.lte-ie8')) {
-            autosize(document.querySelectorAll('textarea'));
-        }
-
         /**
          * Method to show/hide under/over recommended character limit elements/messages.
          * @param {Boolean} over Text entry over the recommended limit
@@ -66,17 +61,23 @@
             }
         });
 
-        /**
-         * Accessible Datepicker v2.1.5
-         * https://github.com/eureka2/ab-datepicker
-         */
-        $('.date-picker').datepicker({
-            weekDayFormat: 'narrow',
-            inputFormat: [''],
-            outputFormat: 'dd/MM/yyyy',
-            daysOfWeekDisabled: [0, 6],
-            gainFocusOnConstruction: false
-        });
+        // Progressive enhancement for browsers > IE8
+        if (!$('html').is('.lte-ie8')) {
+            // Autosize all Textarea elements (does not support IE8).
+            autosize(document.querySelectorAll('textarea'));
+
+            /**
+             * Accessible Datepicker v2.1.5
+             * https://github.com/eureka2/ab-datepicker
+             */
+            $('.date-picker').datepicker({
+                weekDayFormat: 'narrow',
+                inputFormat: [''],
+                outputFormat: 'dd/MM/yyyy',
+                daysOfWeekDisabled: [0, 6],
+                gainFocusOnConstruction: false
+            });
+        }
 
     });
 
