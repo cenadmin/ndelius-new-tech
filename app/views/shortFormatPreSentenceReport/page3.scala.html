@@ -8,10 +8,10 @@
 
 @main("Sources of Information - Short Format Pre Sentence Report", true) {
 
+  <h1 class="heading-xlarge">Sources of Information</h1>
+
   <div class="grid-row">
     <div class="column-two-thirds">
-
-      <h2 class="heading-large no-margin-top">Sources of Information</h2>
 
       @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField

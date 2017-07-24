@@ -8,10 +8,10 @@
 
 @main("Pattern of Offending - Short Format Pre Sentence Report", true) {
 
+  <h1 class="heading-xlarge">Pattern of Offending</h1>
+
   <div class="grid-row">
     <div class="column-two-thirds">
-
-      <h2 class="heading-large no-margin-top">Pattern of Offending</h2>
 
       @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField

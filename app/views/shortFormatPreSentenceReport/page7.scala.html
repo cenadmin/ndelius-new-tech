@@ -8,10 +8,10 @@
 
 @main("Risk Assessment - Short Format Pre Sentence Report", true) {
 
+  <h1 class="heading-xlarge">Risk Assessment</h1>
+
   <div class="grid-row">
     <div class="column-two-thirds">
-
-      <h2 class="heading-large no-margin-top">Risk Assessment</h2>
 
       @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField
