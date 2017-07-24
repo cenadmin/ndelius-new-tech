@@ -30,6 +30,13 @@ input[type="text"] {
 }
 
 input[type="checkbox"] {
+
+  &.js-hidden {
+    +label {
+      display: none !important;
+    }
+  }
+
   @include ie(8) {
     filter: none !important;
     opacity: 1 !important;
@@ -52,4 +59,26 @@ input[type="checkbox"].right {
       right: 8px;
     }
   }
+}
+
+.mce-panel, .mce-menubar {
+  border: none !important;
+}
+
+.mce-toolbar {
+  @include opacity(0);
+  height: 0 !important;
+}
+
+.mce-toolbar-grp.mce-panel {
+  background: white !important;
+}
+
+.mce-edit-area label {
+  color: #A9A9A9 !important;
+  font-size: 25px;
+}
+
+.mce-notification-info {
+  display: none !important;
 }

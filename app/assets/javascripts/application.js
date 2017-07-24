@@ -61,10 +61,63 @@
             }
         });
 
+        // tinyMCE init method
+        function mceSetup(editor) {
+
+            function spellcheck() {
+                editor.buttons.spellchecker.onclick();
+            }
+
+            // Spellcheck on spelling error from server
+            editor.on('init', function(evt) {
+
+                var id = evt.target.id,
+                    ignoreCheckbox = $('#ignore' + id.charAt(0).toUpperCase() + id.slice(1) + 'Spelling');
+
+                if ($('label[for=' + id  + ']').parent().hasClass('form-group-error')) {
+
+                    ignoreCheckbox.removeClass('js-hidden');
+
+                    if (tinymce.get(id).getContent().length) {
+                        spellcheck();
+                    }
+                } else {
+                    ignoreCheckbox.addClass('js-hidden');
+                }
+            });
+
+            // Spellcheck on blur
+            editor.on('blur', function(evt) {
+                if (tinymce.get(evt.target.id).getContent().length) {
+                    spellcheck();
+                }
+            });
+        }
+
+        // Spellcheck response
+        function spellcheckResponse(method, text, success, failure) {
+            if (method == 'spellcheck' && text.replace(/\s/g, '').length) {
+
+                $.getJSON('/spellcheck/' + text, function (data) {
+
+                    var suggestions = {};
+
+                    for (var i = 0, len = data.length; i < len; i++) {
+                        suggestions[data[i].mistake] = data[i].suggestions;
+                    }
+
+                    success(suggestions);
+                }).fail(function (jqxhr, textStatus, error) {
+                    failure('Server error: ' + error);
+                });
+
+            } else {
+                success({});
+            }
+        }
+
         // Progressive enhancement for browsers > IE8
         if (!$('html').is('.lte-ie8')) {
-            // Autosize all Textarea elements (does not support IE8).
-            autosize(document.querySelectorAll('textarea'));
 
             /**
              * Accessible Datepicker v2.1.5
@@ -76,6 +129,26 @@
                 outputFormat: 'dd/MM/yyyy',
                 daysOfWeekDisabled: [0, 6],
                 gainFocusOnConstruction: false
+            });
+
+            /**
+             *
+             */
+            // TinyMCE - all textarea elements
+            $('textarea').tinymce({
+                selector: "textarea",
+                plugins: 'spellchecker autoresize lists placeholder',
+                menubar: '',
+                toolbar: 'spellchecker',
+                spellchecker_languages: 'English=en_gb',
+                resize: false,
+                branding: false,
+                elementpath: false,
+                statusbar: false,
+                autoresize_bottom_margin: '10px',
+                content_style: 'body { padding: 0 !important; margin: 0 !important; }',
+                spellchecker_callback: spellcheckResponse,
+                setup: mceSetup
             });
         }
 
