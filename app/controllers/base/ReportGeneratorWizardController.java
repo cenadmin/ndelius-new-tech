@@ -11,10 +11,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import java.util.function.Function;
 import lombok.val;
 import org.springframework.cglib.beans.BeanMap;
 import org.webjars.play.WebJarsUtil;
 import play.Environment;
+import play.Logger;
 import play.libs.Json;
 import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.Result;
@@ -55,15 +57,28 @@ public abstract class ReportGeneratorWizardController<T extends ReportGeneratorW
     @Override
     protected final CompletionStage<Result> completedWizard(T data) {
 
-        return pdfGenerator.generate(templateName(), data).
-                thenApply(Optional::of).
-/*
-                thenCompose(result -> storeReport(data, result).thenApply(stored ->
+        Function<Byte[], CompletionStage<Optional<Byte[]>>> resultIfStored = result ->
+                storeReport(data, result).thenApply(stored -> {
 
-                    Optional.ofNullable(stored.get("ID")).filter(not(Strings::isNullOrEmpty)).map(value(result)))
-                ).
-*/
-                thenApply(result -> result.map(bytes -> ok(renderCompletedView(bytes))).orElse(wizardFailed(data)));
+                    Logger.info("Store result: " + stored);
+                    return Optional.ofNullable(stored.get("ID")).filter(not(Strings::isNullOrEmpty)).map(value(result));
+                });
+
+        return pdfGenerator.generate(templateName(), data).
+                thenCompose(resultIfStored). // thenApplyAsync(Optional::of).
+                exceptionally(error -> {
+
+                    Logger.error("Generation or Storage error", error);
+                    return Optional.empty();
+                }).
+                thenApplyAsync(result -> result.map(bytes -> ok(renderCompletedView(bytes))).orElseGet(() -> {
+
+                    flash("reportGeneratorFailed", "Report Generation Failed!");
+
+                    Logger.warn("Report generator wizard failed");
+                    return wizardFailed(data);
+
+                }), ec.current()); // Have to provide execution context for HTTP Context to be available when rendering views
     }
 
     @Override
