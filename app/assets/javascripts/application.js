@@ -94,21 +94,31 @@
             });
         }
 
-        // Spellcheck response
+        // Spellcheck response from TinyMCE
         function spellcheckResponse(method, text, success, failure) {
-            if (method == 'spellcheck' && text.replace(/\s/g, '').length) {
+            if (method === 'spellcheck' && text.replace(/\s/g, '').length) {
 
-                $.getJSON('/spellcheck/' + text, function (data) {
+                var csrfToken = $('input[name=csrfToken]').val();
 
+                // Pass the entered text to the back-end for spellchecking
+                $.ajax({
+                    type: 'POST',
+                    url: '/spellcheck',
+                    headers: { 'Csrf-Token' : csrfToken },
+                    contentType: 'text/plain',
+                    data: text.trim(),
+                    dataType: 'json'
+                }).done(function(data) {
                     var suggestions = {};
 
+                    // Filter the response so TinyMCE can display the results
                     for (var i = 0, len = data.length; i < len; i++) {
                         suggestions[data[i].mistake] = data[i].suggestions;
                     }
 
                     success(suggestions);
-                }).fail(function (jqxhr, textStatus, error) {
-                    failure('Server error: ' + error);
+                }).fail(function(jqXHR, textStatus) {
+                    failure('Server error: ' + textStatus);
                 });
 
             } else {
