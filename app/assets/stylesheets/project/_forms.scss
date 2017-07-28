@@ -82,3 +82,9 @@ input[type="checkbox"].right {
 .mce-notification-info {
   display: none !important;
 }
+
+.button {
+  &.secondary {
+    @include button($grey-3);
+  }
+}

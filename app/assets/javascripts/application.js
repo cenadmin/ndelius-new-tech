@@ -126,6 +126,14 @@
             }
         }
 
+        /**
+         * Save and exit
+         */
+        $('#exitButton').click(function() {
+            $('#jumpNumber').val(0);
+            $('form#ndForm').submit();
+        });
+
         // Progressive enhancement for browsers > IE8
         if (!$('html').is('.lte-ie8')) {
 
