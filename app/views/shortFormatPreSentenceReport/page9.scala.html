@@ -6,12 +6,14 @@
 
 @implicitField = @{ FieldConstructor(govukElements.f) }
 
-@main("Proposal - Short Format Pre Sentence Report", true) {
+@main("Risk of Serious Harm - Short Format Pre Sentence Report", true) {
 
-  <h1 class="heading-xlarge">Proposal</h1>
+  <h1 class="heading-xlarge">Risk of Serious Harm</h1>
 
   <div class="grid-row">
     <div class="column-two-thirds">
+
+      <p>For the purpose of this assessment "serious harm" is defined as "an event that is life threatening and/or traumatic and from which recovery, whether physical or psychological can be expected to be difficult or impossible".</p>
 
       @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField
@@ -52,6 +54,14 @@
         @inputHidden(reportForm("offenceAnalysis"))
         @inputHidden(reportForm("ignoreOffenceAnalysisSpelling"))
 
+        @inputHidden(reportForm("issueAccommodation"))
+        @inputHidden(reportForm("issueEmployment"))
+        @inputHidden(reportForm("issueFinance"))
+        @inputHidden(reportForm("issueDrugs"))
+        @inputHidden(reportForm("issueAlcohol"))
+        @inputHidden(reportForm("issueHealth"))
+        @inputHidden(reportForm("issueBehaviour"))
+
         @inputHidden(reportForm("offenderAssessment"))
         @inputHidden(reportForm("ignoreOffenderAssessmentSpelling"))
 
@@ -64,22 +74,22 @@
         @inputHidden(reportForm("likelihoodOfReOffending"))
         @inputHidden(reportForm("ignoreLikelihoodOfReOffendingSpelling"))
 
-        @inputHidden(reportForm("riskOfSeriousHarm"))
-        @inputHidden(reportForm("ignoreRiskOfSeriousHarmSpelling"))
-
-        @textarea(reportForm("proposal"), '_label -> "Enter a proposed sentence", '_help -> "Including length and any sentence components", 'class -> "wide", Symbol("data-limit") -> "2000", Symbol("data-target") -> "proposal-limit", 'required -> "true")
+        @textarea(reportForm("riskOfSeriousHarm"), '_label -> "Detail the risk of serious harm", '_help -> "Indicate tools used, what is the risk, at what level and who to. Also describe what will increase or decrease the risk.", 'class -> "wide", Symbol("data-limit") -> "1000", Symbol("data-target") -> "risk-limit", 'required -> "true")
 
         <table role="presentation">
           <tr>
             <td>
-              <p id="proposal-limit-under" role="note"><span class="bold">2,000</span> recommended character limit</p>
-              <p id="proposal-limit-over" role="alert" class="error-message js-hidden">Recommended character limit reached</p>
+              <p id="risk-limit-under" role="note"><span class="bold">1,000</span> recommended character limit</p>
+              <p id="risk-limit-over" role="alert" class="error-message js-hidden">Recommended character limit reached</p>
             </td>
             <td>
-              <span class="pull-right">@checkbox(reportForm("ignoreProposalSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
+              <span class="pull-right">@checkbox(reportForm("ignoreRiskOfSeriousHarmSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
             </td>
           </tr>
         </table>
+
+        @inputHidden(reportForm("proposal"))
+        @inputHidden(reportForm("ignoreProposalSpelling"))
 
         @inputHidden(reportForm("reportAuthor"))
         @inputHidden(reportForm("office"))
