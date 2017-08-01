@@ -22,4 +22,4 @@ jobs:
                     apt-get install sbt
             - run:
                 name: Run sbt build
-                command: cat /dev/null | sbt assembly
+                command: sbt assembly
