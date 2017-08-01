@@ -2,6 +2,7 @@ package services;
 
 import akka.stream.javadsl.FileIO;
 import akka.stream.javadsl.Source;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.typesafe.config.Config;
 import helpers.JsonHelper;
@@ -43,14 +44,19 @@ public class AlfrescoStore implements DocumentStore {
     @Override
     public CompletionStage<Map<String, String>> uploadNewPdf(Byte[] document, String filename, String onBehalfOfUser, String originalData, String crn, Long entityId) {
 
-        return postFileUpload(filename, document, onBehalfOfUser, "uploadnew", ImmutableMap.of(
-                "CRN", crn,
-                "author", onBehalfOfUser,
-                "entityType", "COURTREPORT",
-                "entityId", entityId.toString(),
-                "docType", "DOCUMENT"
-                // "userData", originalData @TODO: Store originalData JSON string as document metadata
-        ));
+        val parameters = new HashMap<String, String>() {
+            {
+                put("CRN", crn);
+                put("author", onBehalfOfUser);
+                put("entityType", "COURTREPORT");
+                put("entityId", entityId.toString());
+                put("docType", "DOCUMENT");
+                put("userData", originalData);
+                put("forceBroadcast", "true");
+            }
+        };
+
+        return postFileUpload(filename, document, onBehalfOfUser, "uploadnew", parameters);
     }
 
     @Override
@@ -59,34 +65,53 @@ public class AlfrescoStore implements DocumentStore {
         return makeRequest("details/" + documentId, onBehalfOfUser).get().
                 thenApply(WSResponse::asJson).
                 thenApply(JsonHelper::jsonToMap).
-                thenApply(result -> result.get("userData")); //@TODO: Retrieve originalData JSON string from Alfresco
+                thenApply(result -> result.get("userData"));
+    }
+
+    @Override
+    public CompletionStage<Integer> lockDocument(String onBehalfOfUser, String documentId) {
+
+        return makeRequest("reserve/" + documentId, onBehalfOfUser).
+                post(Source.from(ImmutableList.of())).
+                thenApply(WSResponse::getStatus);
     }
 
     @Override
     public CompletionStage<Map<String, String>> updateExistingPdf(Byte[] document, String filename, String onBehalfOfUser, String updatedData, String documentId) {
 
-        val updateDocument = postFileUpload(filename, document, onBehalfOfUser, "uploadandrelease/" + documentId, ImmutableMap.of(
-                "DOC_ID", documentId,
-                "author", onBehalfOfUser
-        ));
+        val result = new HashMap<String, String>();
 
-        val updateMetaData = makeRequest("updatemetadata/" + documentId, onBehalfOfUser).
-                post(Source.from(new ArrayList<>(mapToParts(ImmutableMap.of(
-                        "DOC_ID", documentId
-                        // "userData", updatedData @TODO: Store updatedData JSON string as document metadata
-                ))))).
+        return makeRequest("updatemetadata/" + documentId, onBehalfOfUser).
+                post(Source.from(new ArrayList<>(mapToParts(ImmutableMap.of("userData", updatedData))))).
                 thenApply(WSResponse::asJson).
-                thenApply(JsonHelper::jsonToMap);
+                thenApply(JsonHelper::jsonToMap).
+                exceptionally(error -> {
 
-        return updateDocument.thenCombine(updateMetaData, (doc, meta) ->  {
+                    Logger.error("Update Meta Data error", error);
+                    return ImmutableMap.of();
+                }).
+                thenCompose(meta -> {
 
-            val result = new HashMap<String, String>();
+                    result.putAll(meta);
 
-            result.putAll(doc);
-            result.putAll(meta);
+                    return postFileUpload(
+                            filename,
+                            document,
+                            onBehalfOfUser,
+                            "uploadandrelease/" + documentId,
+                            ImmutableMap.of("author", onBehalfOfUser));
+                }).
+                exceptionally(error -> {
 
-            return result;
-        });
+                    Logger.error("Upload and Release error", error);
+                    return ImmutableMap.of();
+                }).
+                thenApply(doc -> {
+
+                    result.putAll(doc);
+
+                    return result;
+                });
     }
 
     private WSRequest makeRequest(String operation, String onBehalfOfUser) {
