@@ -66,7 +66,38 @@
         @inputHidden(reportForm("patternOfOffending"))
         @inputHidden(reportForm("ignorePatternOfOffendingSpelling"))
 
-        @textarea(reportForm("previousSupervisionResponse"), '_label -> "Response to previous supervision", '_help -> "If applicable", 'class -> "wide", Symbol("data-limit") -> "300", Symbol("data-target") -> "supervision-limit")
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <p class="form-label-bold">Response to previous supervision</p>
+            </legend>
+
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="previousSupervisionResponse" value="Good" @if(reportForm("previousSupervisionResponse").value == "Good") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "Good")" />
+              <label for="radio-1">Good</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="previousSupervisionResponse" value="Satisfactory" @if(reportForm("previousSupervisionResponse").value == "Satisfactory") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "Satisfactory")" />
+              <label for="radio-2">Satisfactory</label>
+            </div>
+            <br/>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="previousSupervisionResponse" value="Poor" @if(reportForm("previousSupervisionResponse").value == "Poor") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "Poor")" />
+              <label for="radio-3">Poor</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="previousSupervisionResponse" value="N/A" @if(reportForm("previousSupervisionResponse").value == "N/A") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "N/A")" />
+              <label for="radio-3">Not applicable</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <hr noshade />
+
+        @textarea(reportForm("additionalPreviousSupervision"), '_label -> "Add additional details on previous supervision", '_help -> "If applicable", 'class -> "wide", Symbol("data-limit") -> "300", Symbol("data-target") -> "supervision-limit")
 
         <table role="presentation">
           <tr>
@@ -75,7 +106,7 @@
               <p id="supervision-limit-over" role="alert" class="error-message js-hidden">Recommended character limit reached</p>
             </td>
             <td>
-              <span class="pull-right">@checkbox(reportForm("ignorePreviousSupervisionResponseSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
+              <span class="pull-right">@checkbox(reportForm("ignoreAdditionalPreviousSupervisionSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
             </td>
           </tr>
         </table>

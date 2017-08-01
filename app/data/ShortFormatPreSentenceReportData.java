@@ -133,18 +133,31 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonIgnore
     private boolean ignoreOffenceAnalysisSpelling;
 
+    @OnPage(5)
     @JsonProperty("ISSUE_ACCOMMODATION")
     private boolean issueAccommodation;
+
+    @OnPage(5)
     @JsonProperty("ISSUE_EMPLOYMENT")
     private boolean issueEmployment;
+
+    @OnPage(5)
     @JsonProperty("ISSUE_FINANCE")
     private boolean issueFinance;
+
+    @OnPage(5)
     @JsonProperty("ISSUE_DRUGS")
     private boolean issueDrugs;
+
+    @OnPage(5)
     @JsonProperty("ISSUE_ALCOHOL")
     private boolean issueAlcohol;
+
+    @OnPage(5)
     @JsonProperty("ISSUE_HEALTH")
     private boolean issueHealth;
+
+    @OnPage(5)
     @JsonProperty("ISSUE_BEHAVIOUR")
     private boolean issueBehaviour;
 
@@ -166,12 +179,16 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean ignorePatternOfOffendingSpelling;
 
     @OnPage(8)
-    @SpellCheck(overrideField = "ignorePreviousSupervisionResponseSpelling")
     @JsonProperty("PREVIOUS_SUPERVISION_RESPONSE")
     private String previousSupervisionResponse;
 
+    @OnPage(8)
+    @SpellCheck(overrideField = "ignoreAdditionalPreviousSupervisionSpelling")
+    @JsonProperty("ADDITIONAL_PREVIOUS_SUPERVISION")
+    private String additionalPreviousSupervision;
+
     @JsonIgnore
-    private boolean ignorePreviousSupervisionResponseSpelling;
+    private boolean ignoreAdditionalPreviousSupervisionSpelling;
 
     @RequiredOnPage(8)
     @SpellCheck(overrideField = "ignoreLikelihoodOfReOffendingSpelling")
