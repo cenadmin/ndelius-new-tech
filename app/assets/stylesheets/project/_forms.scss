@@ -1,4 +1,4 @@
-textarea , textarea.form-control {
+textarea.form-control {
   max-width: 100%;
 
   margin: 10px 0 0 0;
@@ -18,6 +18,11 @@ textarea , textarea.form-control {
 
   &.wide {
     width: 100%;
+  }
+
+  &.classic {
+    border: 2px solid $text-colour;
+    min-height: 150px;
   }
 }
 
