@@ -56,7 +56,7 @@ public class ShortFormatPreSentenceReportController extends ReportGeneratorWizar
             paramEncrypter.accept("pnc");
         }
 
-        if ("2".equals(params.get("pageNumber"))) {
+        if ("3".equals(params.get("pageNumber"))) {
 
             paramEncrypter.accept("court");
             paramEncrypter.accept("dateOfHearing");

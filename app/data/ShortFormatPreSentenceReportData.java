@@ -20,7 +20,6 @@ import play.data.validation.ValidationError;
 public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData {
 
     @Encrypted
-    @OnPage(1)
     @RequiredOnPage(2)
     @JsonProperty("_NAME_")
     private String name;
