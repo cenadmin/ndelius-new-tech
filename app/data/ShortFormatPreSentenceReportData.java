@@ -20,27 +20,28 @@ import play.data.validation.ValidationError;
 public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData {
 
     @Encrypted
-    @RequiredOnPage(1)
+    @OnPage(1)
+    @RequiredOnPage(2)
     @JsonProperty("_NAME_")
     private String name;
 
     @Encrypted
-    @RequiredOnPage(1)
+    @RequiredOnPage(2)
     @JsonProperty("_DATE_OF_BIRTH_")
     private String dateOfBirth;
 
     @Encrypted
-    @RequiredOnPage(1)
+    @RequiredOnPage(2)
     @JsonProperty("_AGE_")
     private Integer age;
 
     @Encrypted
-    @RequiredOnPage(1)
+    @RequiredOnPage(2)
     @JsonProperty("_ADDRESS_")
     private String address;
 
     @Encrypted
-    @OnPage(1)
+    @OnPage(2)
     @JsonProperty("_PNC_ID_")
     private String pnc;
 
@@ -49,54 +50,54 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
 
 
     @Encrypted
-    @RequiredOnPage(2)
+    @RequiredOnPage(3)
     @JsonProperty("_COURT_")
     private String court;
 
     @Encrypted
-    @RequiredOnPage(2)
+    @RequiredOnPage(3)
     @JsonProperty("_DATE_OF_HEARING_")
     private String dateOfHearing;
 
     @Encrypted
-    @RequiredOnPage(2)
+    @RequiredOnPage(3)
     @JsonProperty("_LOCAL_JUSTICE_AREA_")
     private String localJusticeArea;
 
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("INTERVIEW_INFORMATION_SOURCE")
     private boolean interviewInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("SERVICE_RECORDS_INFORMATION_SOURCE")
     private boolean serviceRecordsInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("CPS_SUMMARY_INFORMATION_SOURCE")
     private boolean cpsSummaryInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("OASYS_ASSESSMENTS_INFORMATION_SOURCE")
     private boolean oasysAssessmentsInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("PREVIOUS_CONVICTIONS_INFORMATION_SOURCE")
     private boolean previousConvictionsInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("VICTIM_STATEMENT_INFORMATION_SOURCE")
     private boolean victimStatementInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("CHILDREN_SERVICES_INFORMATION_SOURCE")
     private boolean childrenServicesInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("POLICE_INFORMATION_SOURCE")
     private boolean policeInformationSource;
 
-    @OnPage(3)
+    @OnPage(4)
     @JsonProperty("OTHER_INFORMATION_SOURCE")
     private boolean otherInformationSource;
 
@@ -109,7 +110,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean ignoreOtherInformationDetailsSpelling;
 
 
-    @RequiredOnPage(4)
+    @RequiredOnPage(5)
     @SpellCheck(overrideField = "ignoreMainOffenceSpelling")
     @JsonProperty("MAIN_OFFENCE")
     private String mainOffence;
@@ -117,7 +118,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonIgnore
     private boolean ignoreMainOffenceSpelling;
 
-    @RequiredOnPage(4)
+    @RequiredOnPage(5)
     @SpellCheck(overrideField = "ignoreOffenceSummarySpelling")
     @JsonProperty("OFFENCE_SUMMARY")
     private String offenceSummary;
@@ -125,7 +126,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonIgnore
     private boolean ignoreOffenceSummarySpelling;
 
-    @RequiredOnPage(4)
+    @RequiredOnPage(5)
     @SpellCheck(overrideField = "ignoreOffenceAnalysisSpelling")
     @JsonProperty("OFFENCE_ANALYSIS")
     private String offenceAnalysis;
@@ -133,35 +134,35 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonIgnore
     private boolean ignoreOffenceAnalysisSpelling;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_ACCOMMODATION")
     private boolean issueAccommodation;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_EMPLOYMENT")
     private boolean issueEmployment;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_FINANCE")
     private boolean issueFinance;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_DRUGS")
     private boolean issueDrugs;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_ALCOHOL")
     private boolean issueAlcohol;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_HEALTH")
     private boolean issueHealth;
 
-    @OnPage(5)
+    @OnPage(6)
     @JsonProperty("ISSUE_BEHAVIOUR")
     private boolean issueBehaviour;
 
-    @RequiredOnPage(6)
+    @RequiredOnPage(7)
     @SpellCheck(overrideField = "ignoreOffenderAssessmentSpelling")
     @JsonProperty("OFFENDER_ASSESSMENT")
     private String offenderAssessment;
@@ -170,7 +171,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean ignoreOffenderAssessmentSpelling;
 
 
-    @OnPage(7)
+    @OnPage(8)
     @SpellCheck(overrideField = "ignorePatternOfOffendingSpelling")
     @JsonProperty("PATTERN_OF_OFFENDING")
     private String patternOfOffending;
@@ -178,11 +179,11 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonIgnore
     private boolean ignorePatternOfOffendingSpelling;
 
-    @OnPage(8)
+    @OnPage(9)
     @JsonProperty("PREVIOUS_SUPERVISION_RESPONSE")
     private String previousSupervisionResponse;
 
-    @OnPage(8)
+    @OnPage(9)
     @SpellCheck(overrideField = "ignoreAdditionalPreviousSupervisionSpelling")
     @JsonProperty("ADDITIONAL_PREVIOUS_SUPERVISION")
     private String additionalPreviousSupervision;
@@ -190,7 +191,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonIgnore
     private boolean ignoreAdditionalPreviousSupervisionSpelling;
 
-    @RequiredOnPage(8)
+    @RequiredOnPage(9)
     @SpellCheck(overrideField = "ignoreLikelihoodOfReOffendingSpelling")
     @JsonProperty("LIKELIHOOD_OF_RE_OFFENDING")
     private String likelihoodOfReOffending;
@@ -199,7 +200,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean ignoreLikelihoodOfReOffendingSpelling;
 
 
-    @RequiredOnPage(9)
+    @RequiredOnPage(10)
     @SpellCheck(overrideField = "ignoreRiskOfSeriousHarmSpelling")
     @JsonProperty("RISK_OF_SERIOUS_HARM")
     private String riskOfSeriousHarm;
@@ -208,7 +209,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean ignoreRiskOfSeriousHarmSpelling;
 
 
-    @RequiredOnPage(10)
+    @RequiredOnPage(11)
     @SpellCheck(overrideField = "ignoreProposalSpelling")
     @JsonProperty("PROPOSAL")
     private String proposal;
@@ -217,11 +218,11 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean ignoreProposalSpelling;
 
 
-    @RequiredOnPage(11)
+    @RequiredOnPage(12)
     @JsonProperty("REPORT_AUTHOR")
     private String reportAuthor;
 
-    @RequiredOnPage(11)
+    @RequiredOnPage(12)
     @JsonProperty("OFFICE")
     private String office;
 

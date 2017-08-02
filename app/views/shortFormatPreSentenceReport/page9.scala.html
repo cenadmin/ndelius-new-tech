@@ -6,14 +6,12 @@
 
 @implicitField = @{ FieldConstructor(govukElements.f) }
 
-@main("Risk of Serious Harm - Short Format Pre Sentence Report", true) {
+@main("Risk Assessment - Short Format Pre Sentence Report", true) {
 
-  <h1 class="heading-xlarge">Risk of Serious Harm</h1>
+  <h1 class="heading-xlarge">Risk Assessment</h1>
 
   <div class="grid-row">
     <div class="column-two-thirds">
-
-      <p>For the purpose of this assessment "serious harm" is defined as "an event that is life threatening and/or traumatic and from which recovery, whether physical or psychological can be expected to be difficult or impossible".</p>
 
       @helper.form(action = routes.ShortFormatPreSentenceReportController.wizardPost(), 'id -> "ndForm", 'novalidate -> "") {
         @CSRF.formField
@@ -68,26 +66,66 @@
         @inputHidden(reportForm("patternOfOffending"))
         @inputHidden(reportForm("ignorePatternOfOffendingSpelling"))
 
-        @inputHidden(reportForm("previousSupervisionResponse"))
-        @inputHidden(reportForm("additionalPreviousSupervision"))
-        @inputHidden(reportForm("ignoreAdditionalPreviousSupervisionSpelling"))
+        <div class="form-group">
+          <fieldset>
 
-        @inputHidden(reportForm("likelihoodOfReOffending"))
-        @inputHidden(reportForm("ignoreLikelihoodOfReOffendingSpelling"))
+            <legend>
+              <p class="form-label-bold">Response to previous supervision</p>
+            </legend>
 
-        @textarea(reportForm("riskOfSeriousHarm"), '_label -> "Detail the risk of serious harm", '_help -> "Indicate tools used, what is the risk, at what level and who to. Also describe what will increase or decrease the risk.", 'class -> "wide", Symbol("data-limit") -> "1000", Symbol("data-target") -> "risk-limit", 'required -> "true")
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="previousSupervisionResponse" value="Good" @if(reportForm("previousSupervisionResponse").value == "Good") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "Good")" />
+              <label for="radio-1">Good</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="previousSupervisionResponse" value="Satisfactory" @if(reportForm("previousSupervisionResponse").value == "Satisfactory") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "Satisfactory")" />
+              <label for="radio-2">Satisfactory</label>
+            </div>
+            <br/>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="previousSupervisionResponse" value="Poor" @if(reportForm("previousSupervisionResponse").value == "Poor") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "Poor")" />
+              <label for="radio-3">Poor</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-3" type="radio" name="previousSupervisionResponse" value="N/A" @if(reportForm("previousSupervisionResponse").value == "N/A") { checked="checked" } aria-checked="@(reportForm("previousSupervisionResponse").value == "N/A")" />
+              <label for="radio-3">Not applicable</label>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <hr noshade />
+
+        @textarea(reportForm("additionalPreviousSupervision"), '_label -> "Add additional details on previous supervision", '_help -> "If applicable", 'class -> "wide", Symbol("data-limit") -> "300", Symbol("data-target") -> "supervision-limit")
 
         <table role="presentation">
           <tr>
             <td>
-              <p id="risk-limit-under" role="note"><span class="bold">1,000</span> recommended character limit</p>
-              <p id="risk-limit-over" role="alert" class="error-message js-hidden">Recommended character limit reached</p>
+              <p id="supervision-limit-under" role="note"><span class="bold">300</span> recommended character limit</p>
+              <p id="supervision-limit-over" role="alert" class="error-message js-hidden">Recommended character limit reached</p>
             </td>
             <td>
-              <span class="pull-right">@checkbox(reportForm("ignoreRiskOfSeriousHarmSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
+              <span class="pull-right">@checkbox(reportForm("ignoreAdditionalPreviousSupervisionSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
             </td>
           </tr>
         </table>
+
+        <hr noshade />
+
+        @textarea(reportForm("likelihoodOfReOffending"), '_label -> "Likelihood of re-offending", '_help -> "Indicate which tools have been used (RM2000,OGRS etc.)", 'class -> "wide", 'required -> "true")
+
+        <div class="grid-row">
+          <div class="column-one-half">
+            &nbsp;
+          </div>
+          <div class="column-one-half">
+            <span class="pull-right">@checkbox(reportForm("ignoreLikelihoodOfReOffendingSpelling"), '_label -> "Ignore spelling", 'class -> "right")</span>
+          </div>
+        </div>
+
+        @inputHidden(reportForm("riskOfSeriousHarm"))
+        @inputHidden(reportForm("ignoreRiskOfSeriousHarmSpelling"))
 
         @inputHidden(reportForm("proposal"))
         @inputHidden(reportForm("ignoreProposalSpelling"))

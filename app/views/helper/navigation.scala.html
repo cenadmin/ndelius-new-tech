@@ -1,20 +1,29 @@
-@(implicit current: Int)
+@(implicit current: Int, finalPage: Boolean = false)
 
 <nav role="menubar" class="js-stick-at-top-when-scrolling">
 
-  <div class="nav-header"></div>
+    <div class="nav-header"></div>
 
-  <a href="/startReport" role="menuitem" class="nav-home">Start your report</a><br/>
-  @navigationEntry(1, "Offender Details")
-  @navigationEntry(2, "Sentencing Court Details")
-  @navigationEntry(3, "Sources of Information")
-  @navigationEntry(4, "Offence Details")
-  @navigationEntry(5, "Offender Assessment - Issues")
-  @navigationEntry(6, "Offender Assessment")
-  @navigationEntry(7, "Pattern of Offending")
-  @navigationEntry(8, "Risk Assessment")
-  @navigationEntry(9, "Risk of Serious Harm")
-  @navigationEntry(10, "Proposal")
-  @navigationEntry(11, "Signature")
+    @navigationEntry(1, "Start your report")
+    @navigationEntry(2, "Offender Details")
+    @navigationEntry(3, "Sentencing Court Details")
+    @navigationEntry(4, "Sources of Information")
+    @navigationEntry(5, "Offence Details")
+    @navigationEntry(6, "Offender Assessment - Issues")
+    @navigationEntry(7, "Offender Assessment")
+    @navigationEntry(8, "Pattern of Offending")
+    @navigationEntry(9, "Risk Assessment")
+    @navigationEntry(10, "Risk of Serious Harm")
+    @navigationEntry(11, "Proposal")
+    @navigationEntry(12, "Signature")
+
+    @if(!finalPage) {
+
+        <div class="nav-header margin-top large"></div>
+
+        <p class="font-xsmall">You can save your progress as a draft report and come back to it later</p>
+
+        <a href="#" id="exitButton" class="nav-item">Save &amp; Exit</a>
+    }
 
 </nav>
