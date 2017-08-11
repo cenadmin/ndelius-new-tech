@@ -1,11 +1,11 @@
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.google.inject.AbstractModule;
-import com.mongodb.rx.client.MongoClient;
-import injection.MongoClientProvider;
+import injection.DynamoClientProvider;
 import interfaces.AnalyticsStore;
 import interfaces.DocumentStore;
 import interfaces.PdfGenerator;
 import services.AlfrescoStore;
-import services.MongoDbStore;
+import services.DynamoDbStore;
 import services.RestPdfGenerator;
 
 /**
@@ -25,8 +25,8 @@ public class Module extends AbstractModule {
 
         bind(PdfGenerator.class).to(RestPdfGenerator.class);
         bind(DocumentStore.class).to(AlfrescoStore.class);
-        bind(AnalyticsStore.class).to(MongoDbStore.class);
+        bind(AnalyticsStore.class).to(DynamoDbStore.class);
 
-        bind(MongoClient.class).toProvider(MongoClientProvider.class).asEagerSingleton();
+        bind(DynamoDB.class).toProvider(DynamoClientProvider.class).asEagerSingleton();
     }
 }

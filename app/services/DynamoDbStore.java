@@ -1,50 +1,41 @@
 package services;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.mongodb.rx.client.MongoClient;
-import com.mongodb.rx.client.MongoCollection;
+import com.amazonaws.services.dynamodbv2.document.DynamoDB;
+import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.dynamodbv2.document.Table;
 import com.typesafe.config.Config;
 import interfaces.AnalyticsStore;
 import javax.inject.Inject;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import lombok.val;
-import org.bson.Document;
-import org.joda.time.DateTime;
-import play.Logger;
 
-public class MongoDbStore implements AnalyticsStore {
+public class DynamoDbStore implements AnalyticsStore {
 
-    private final MongoCollection<Document> events;
+    private final Table events;
 
     @Inject
-    public MongoDbStore(Config configuration,
-                        MongoClient mongoClient) {
+    public DynamoDbStore(Config configuration,
+                         DynamoDB dynamoClient) {
 
-        val databaseName = configuration.getString("analytics.mongo.database");
-        val collectionName = configuration.getString("analytics.mongo.collection");
+        val tableName = configuration.getString("analytics.dynamo.table");
 
-        events = mongoClient.getDatabase(databaseName).getCollection(collectionName);
+        events = dynamoClient.getTable(tableName);
     }
 
     @Override
     public void recordEvent(Map<String, Object> data) {
 
-        events.insertOne(new Document(data)).subscribe(
-                success -> { },
-                error -> Logger.error("Analytics Error", error)
-        );
+        events.putItem(new Item().withMap("event", data));
     }
 
     @Override
     public CompletableFuture<List<Map<String, Object>>> recentEvents(int limit) {
 
         val result = new CompletableFuture<List<Map<String, Object>>>();
-
+/*
         events.find().
                 projection(new Document(ImmutableMap.of(
                         "_id", 0,
@@ -65,7 +56,7 @@ public class MongoDbStore implements AnalyticsStore {
                 toList().
                 doOnError(result::completeExceptionally).
                 subscribe(result::complete);
-
+*/
         return result;
     }
 
@@ -73,7 +64,7 @@ public class MongoDbStore implements AnalyticsStore {
     public CompletableFuture<Map<Integer, Integer>> pageVisits() {
 
         val result = new CompletableFuture<Map<Integer, Integer>>();
-
+/*
         val group = ImmutableList.of(
                 new Document(ImmutableMap.of(
                         "$group", new Document(ImmutableMap.of(
@@ -98,7 +89,7 @@ public class MongoDbStore implements AnalyticsStore {
                 ).
                 doOnError(result::completeExceptionally).
                 subscribe(result::complete);
-
+*/
         return result;
     }
 }
