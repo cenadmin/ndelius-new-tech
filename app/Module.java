@@ -1,5 +1,7 @@
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.google.inject.AbstractModule;
+import injection.AmazonDynamoDBProvider;
 import injection.DynamoClientProvider;
 import interfaces.AnalyticsStore;
 import interfaces.DocumentStore;
@@ -28,5 +30,6 @@ public class Module extends AbstractModule {
         bind(AnalyticsStore.class).to(DynamoDbStore.class);
 
         bind(DynamoDB.class).toProvider(DynamoClientProvider.class).asEagerSingleton();
+        bind(AmazonDynamoDB.class).toProvider(AmazonDynamoDBProvider.class).asEagerSingleton();
     }
 }
