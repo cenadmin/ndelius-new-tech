@@ -26,7 +26,7 @@ libraryDependencies ++= Seq(
   "org.webjars" % "underscorejs" % "1.8.3",
   "org.webjars" % "jquery" % "1.12.4",
   "org.webjars" % "jquery-ui" % "1.12.1",
-  "com.amazonaws" % "aws-java-sdk-dynamodb" % "1.11.174",
+  ("com.amazonaws" % "aws-java-sdk-dynamodb" % "1.11.174").exclude("commons-logging", "commons-logging"),
   ("org.languagetool" % "language-en" % "3.7").exclude("commons-logging", "commons-logging"),
   "org.projectlombok" % "lombok" % "1.16.16" % "provided"
 )
