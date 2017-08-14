@@ -1753,6 +1753,12 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
     }
 
     @Override
+    public CompletableFuture<List<Map<String, Object>>> sessionEvents(String sessionId) {
+
+        return null;
+    }
+
+    @Override
     public CompletableFuture<Map<Integer, Integer>> pageVisits() {
 
         return null;

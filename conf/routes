@@ -12,6 +12,7 @@ GET     /healthcheck                            controllers.UtilityController.he
 GET     /analytics                              controllers.AnalyticsController.index
 GET     /analytics/pageVisits                   controllers.AnalyticsController.pageVisits
 GET     /analytics/recent/:limit                controllers.AnalyticsController.recentEvents(limit: Integer)
+GET     /analytics/session/:id                  controllers.AnalyticsController.sessionEvents(id: String)
 
 GET     /nationalSearch                         controllers.NationalSearchController.index
 POST    /spellcheck                             controllers.NationalSearchController.postSpellcheck
