@@ -135,7 +135,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonProperty("OFFENCE_ANALYSIS")
     private String offenceAnalysis;
 
-    @RequiredOnPage(6)
+    @OnPage(6)
     @JsonProperty("PATTERN_OF_OFFENDING")
     private String patternOfOffending;
 
