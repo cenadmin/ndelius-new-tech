@@ -19,6 +19,25 @@
         </div>
         <div class="column-two-thirds">
 
+            @if(reportForm.errors.size() > 0) {
+                <div class="error-summary no-margin-top">
+                    <h2 class="heading-medium no-margin-top">You need to fix the errors on this page before continuing</h2>
+
+                    <p>See highlighted errors below</p>
+
+                    @for((key, value) <- reportForm.errors) {
+                        <p class="error-message">
+                        @key.toString() match {
+                            case "offenderAssessment" => {
+                                Provide a brief assessment covering the all areas
+                            }
+                            case _ => {}
+                        }
+                        </p>
+                    }
+                </div>
+            }
+
             <h2 class="lede no-margin-top margin-bottom medium">Select the underlying issues that are relevant as motivators or drivers for the main offence</h2>
 
             <div class="notice">

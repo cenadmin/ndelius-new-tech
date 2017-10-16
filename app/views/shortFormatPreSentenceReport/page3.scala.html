@@ -19,6 +19,32 @@
         </div>
         <div class="column-two-thirds">
 
+        @if(reportForm.errors.size() > 0) {
+            <div class="error-summary no-margin-top">
+                <h2 class="heading-medium no-margin-top">You need to fix the errors on this page before continuing</h2>
+
+                <p>See highlighted errors below</p>
+
+                <!-- TODO: Correct the order of these errors -->
+                @for((key, value) <- reportForm.errors) {
+                    <p class="error-message">
+                    @key.toString() match {
+                        case "court" => {
+                            Enter the name of the sentencing court
+                        }
+                        case "localJusticeArea" => {
+                            Enter the local justice area of the sentencing court
+                        }
+                        case "dateOfHearing" => {
+                            Enter the date of the hearing
+                        }
+                        case _ => {}
+                    }
+                    </p>
+                }
+            </div>
+        }
+
         @helper.form(action = relative(routes.ShortFormatPreSentenceReportController.wizardPost()), 'id -> "ndForm", 'novalidate -> "") {
             @CSRF.formField
 
@@ -35,9 +61,9 @@
 
             @inputHidden(reportForm("pncSupplied"))
 
-            @inputText(reportForm("court"), '_label -> "Court", 'required -> "true")
-            @inputText(reportForm("localJusticeArea"), '_label -> "Local justice area", 'required -> "true")
-            @inputText(reportForm("dateOfHearing"), '_label -> "Date of hearing", '_help -> "For example: 28/06/2017", 'class -> "date-picker", 'required -> "true")
+            @inputText(reportForm("court"), '_label -> "Court", 'required -> "true", '_error -> "Enter the name of the sentencing court")
+            @inputText(reportForm("localJusticeArea"), '_label -> "Local justice area", 'required -> "true", '_error -> "Enter the local justice area of the sentencing court")
+            @inputText(reportForm("dateOfHearing"), '_label -> "Date of hearing", '_help -> "For example: 28/06/2017", 'class -> "date-picker", 'required -> "true", '_error -> "Enter the date of the hearing")
 
             @inputHidden(reportForm("interviewInformationSource"))
             @inputHidden(reportForm("serviceRecordsInformationSource"))

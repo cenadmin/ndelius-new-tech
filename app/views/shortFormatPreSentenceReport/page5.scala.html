@@ -24,6 +24,29 @@
         </div>
         <div class="column-two-thirds">
 
+        @if(reportForm.errors.size() > 0) {
+            <div class="error-summary no-margin-top">
+                <h2 class="heading-medium no-margin-top">You need to fix the errors on this page before continuing</h2>
+
+                <p>See highlighted errors below</p>
+
+                <!-- TODO: Correct the order of these errors -->
+                @for((key, value) <- reportForm.errors) {
+                    <p class="error-message">
+                    @key.toString() match {
+                        case "mainOffence" => {
+                            Enter the main offence and dates
+                        }
+                        case "offenceSummary" => {
+                            You must enter a brief summary of the offence
+                        }
+                        case _ => {}
+                    }
+                    </p>
+                }
+            </div>
+        }
+
         @helper.form(action = relative(routes.ShortFormatPreSentenceReportController.wizardPost()), 'id -> "ndForm", 'novalidate -> "") {
             @CSRF.formField
 
