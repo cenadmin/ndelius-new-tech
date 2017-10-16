@@ -16,16 +16,15 @@
 
     @if(current < entries.length) {
         <a id="exitLink" href="javascript:void(0);" class="bold font-xsmall no-underline no-margin-top no-margin-bottom">Save a draft of this report</a>
+        <div class="margin-bottom medium"></div>
     }
 
-    <div class="clearfix"></div>
-
-    <h3 class="font-xsmall bold margin-top medium">Report sections:</h3>
+    <h3 class="font-xsmall bold">Report sections:</h3>
 
     <span class="display-block margin-top"></span>
 
     @for((entry, index) <- entries.zipWithIndex) {
-        @navigationEntry(index + 2, entry)
+        @navigationEntry(index + 1, entry)
     }
 
 </nav>
