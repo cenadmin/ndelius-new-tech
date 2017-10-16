@@ -73,10 +73,12 @@
             @inputHidden(reportForm("victimStatementInformationSource"))
             @inputHidden(reportForm("childrenServicesInformationSource"))
             @inputHidden(reportForm("policeInformationSource"))
+            @inputHidden(reportForm("sentencingGuidelinesSource"))
             @inputHidden(reportForm("otherInformationSource"))
             @inputHidden(reportForm("otherInformationDetails"))
 
             @inputHidden(reportForm("mainOffence"))
+            @inputHidden(reportForm("otherOffences"))
             @inputHidden(reportForm("offenceSummary"))
 
             @inputHidden(reportForm("offenceAnalysis"))
@@ -85,10 +87,11 @@
             @inputHidden(reportForm("issueAccommodation"))
             @inputHidden(reportForm("issueEmployment"))
             @inputHidden(reportForm("issueFinance"))
-            @inputHidden(reportForm("issueDrugs"))
-            @inputHidden(reportForm("issueAlcohol"))
+            @inputHidden(reportForm("issueRelationships"))
+            @inputHidden(reportForm("issueSubstanceAbuse"))
             @inputHidden(reportForm("issueHealth"))
             @inputHidden(reportForm("issueBehaviour"))
+            @inputHidden(reportForm("issueOther"))
 
             @inputHidden(reportForm("offenderAssessment"))
 
@@ -100,9 +103,13 @@
 
             @inputHidden(reportForm("proposal"))
 
-            @inputText(reportForm("reportAuthor"), '_label -> "Report author", 'required -> "true")
-            @inputText(reportForm("office"), '_label -> "Office", 'required -> "true")
-            @inputText(reportForm("reportDate"), '_label -> "Completion date", '_help -> "For example: 28/06/2017", 'class -> "date-picker", 'required -> "true")
+            @inputText(reportForm("reportAuthor"), 'class -> "half-width", '_label -> "Report author", 'required -> "true", '_error -> "Enter the report author")
+            @inputText(reportForm("office"), 'class -> "half-width", '_label -> "Office", 'required -> "true", '_error -> "Enter the office")
+            @inputText(reportForm("officePhone"), 'class -> "half-width", '_label -> "Court office phone number", 'required -> "true", '_error -> "Enter the court office phone number")
+            @inputText(reportForm("counterSignature"), 'class -> "half-width", '_label -> "Counter signature (if applicable)")
+            @inputText(reportForm("reportDate"), '_label -> "Completion date", '_help -> "For example: 28/06/2017", 'class -> "date-picker", 'required -> "true", '_error -> "Enter the report date")
+
+            <p>&nbsp;</p>
 
             @pageNumber(10, "Submit and view your report")
         }

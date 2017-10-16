@@ -71,6 +71,7 @@
                     @checkbox(reportForm("victimStatementInformationSource"), '_label -> "Victim statement")
                     @checkbox(reportForm("childrenServicesInformationSource"), '_label -> "Children services checks")
                     @checkbox(reportForm("policeInformationSource"), '_label -> "Police information")
+                    @checkbox(reportForm("sentencingGuidelinesSource"), '_label -> "Sentencing guidelines")
                     @checkbox(reportForm("otherInformationSource"), '_label -> "Other (please specify below)", Symbol("data-target") -> "other-information")
 
                     <div class="panel panel-border-narrow js-hidden" id="other-information">
@@ -78,6 +79,7 @@
                     </div>
 
                     @inputHidden(reportForm("mainOffence"))
+                    @inputHidden(reportForm("otherOffences"))
                     @inputHidden(reportForm("offenceSummary"))
 
                     @inputHidden(reportForm("offenceAnalysis"))
@@ -86,10 +88,11 @@
                     @inputHidden(reportForm("issueAccommodation"))
                     @inputHidden(reportForm("issueEmployment"))
                     @inputHidden(reportForm("issueFinance"))
-                    @inputHidden(reportForm("issueDrugs"))
-                    @inputHidden(reportForm("issueAlcohol"))
+                    @inputHidden(reportForm("issueRelationships"))
+                    @inputHidden(reportForm("issueSubstanceAbuse"))
                     @inputHidden(reportForm("issueHealth"))
                     @inputHidden(reportForm("issueBehaviour"))
+                    @inputHidden(reportForm("issueOther"))
 
                     @inputHidden(reportForm("offenderAssessment"))
 
@@ -102,6 +105,8 @@
 
                     @inputHidden(reportForm("reportAuthor"))
                     @inputHidden(reportForm("office"))
+                    @inputHidden(reportForm("officePhone"))
+                    @inputHidden(reportForm("counterSignature"))
                     @inputHidden(reportForm("reportDate"))
 
                     <div class="margin-top large"></div>

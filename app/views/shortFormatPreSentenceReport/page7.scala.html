@@ -9,7 +9,7 @@
 
 @main("Offender assessment - Short Format Pre Sentence Report") {
 
-    <h1 class="heading-xlarge">Offender Assessment</h1>
+    <h1 class="heading-xlarge">Offender assessment</h1>
 
     <div class="grid-row">
         <div class="column-one-third">
@@ -79,10 +79,12 @@
                 @inputHidden(reportForm("victimStatementInformationSource"))
                 @inputHidden(reportForm("childrenServicesInformationSource"))
                 @inputHidden(reportForm("policeInformationSource"))
+                @inputHidden(reportForm("sentencingGuidelinesSource"))
                 @inputHidden(reportForm("otherInformationSource"))
                 @inputHidden(reportForm("otherInformationDetails"))
 
                 @inputHidden(reportForm("mainOffence"))
+                @inputHidden(reportForm("otherOffences"))
                 @inputHidden(reportForm("offenceSummary"))
 
                 @inputHidden(reportForm("offenceAnalysis"))
@@ -91,10 +93,11 @@
                 @checkbox(reportForm("issueAccommodation"), '_label -> "Accommodation")
                 @checkbox(reportForm("issueEmployment"), '_label -> "Employment")
                 @checkbox(reportForm("issueFinance"), '_label -> "Finance")
-                @checkbox(reportForm("issueDrugs"), '_label -> "Drugs")
-                @checkbox(reportForm("issueAlcohol"), '_label -> "Alcohol")
+                @checkbox(reportForm("issueRelationships"), '_label -> "Relationships")
+                @checkbox(reportForm("issueSubstanceAbuse"), '_label -> "Substance misuse")
                 @checkbox(reportForm("issueHealth"), '_label -> "Physical & mental health relationships")
                 @checkbox(reportForm("issueBehaviour"), '_label -> "Thinking & behaviour")
+                @checkbox(reportForm("issueOther"), '_label -> "Other")
 
                 <hr />
 
@@ -109,6 +112,8 @@
 
                 @inputHidden(reportForm("reportAuthor"))
                 @inputHidden(reportForm("office"))
+                @inputHidden(reportForm("officePhone"))
+                @inputHidden(reportForm("counterSignature"))
                 @inputHidden(reportForm("reportDate"))
 
                 @pageNumber(7, "Save & continue")

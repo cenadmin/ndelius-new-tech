@@ -87,10 +87,12 @@
             @inputHidden(reportForm("victimStatementInformationSource"))
             @inputHidden(reportForm("childrenServicesInformationSource"))
             @inputHidden(reportForm("policeInformationSource"))
+            @inputHidden(reportForm("sentencingGuidelinesSource"))
             @inputHidden(reportForm("otherInformationSource"))
             @inputHidden(reportForm("otherInformationDetails"))
 
             @inputHidden(reportForm("mainOffence"))
+            @inputHidden(reportForm("otherOffences"))
             @inputHidden(reportForm("offenceSummary"))
 
             @inputHidden(reportForm("offenceAnalysis"))
@@ -99,10 +101,11 @@
             @inputHidden(reportForm("issueAccommodation"))
             @inputHidden(reportForm("issueEmployment"))
             @inputHidden(reportForm("issueFinance"))
-            @inputHidden(reportForm("issueDrugs"))
-            @inputHidden(reportForm("issueAlcohol"))
+            @inputHidden(reportForm("issueRelationships"))
+            @inputHidden(reportForm("issueSubstanceAbuse"))
             @inputHidden(reportForm("issueHealth"))
             @inputHidden(reportForm("issueBehaviour"))
+            @inputHidden(reportForm("issueOther"))
 
             @inputHidden(reportForm("offenderAssessment"))
 
@@ -146,6 +149,8 @@
 
             @inputHidden(reportForm("reportAuthor"))
             @inputHidden(reportForm("office"))
+            @inputHidden(reportForm("officePhone"))
+            @inputHidden(reportForm("counterSignature"))
             @inputHidden(reportForm("reportDate"))
 
             @pageNumber(8, "Save & continue")

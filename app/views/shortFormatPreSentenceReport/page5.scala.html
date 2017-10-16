@@ -75,10 +75,15 @@
             @inputHidden(reportForm("victimStatementInformationSource"))
             @inputHidden(reportForm("childrenServicesInformationSource"))
             @inputHidden(reportForm("policeInformationSource"))
+            @inputHidden(reportForm("sentencingGuidelinesSource"))
             @inputHidden(reportForm("otherInformationSource"))
             @inputHidden(reportForm("otherInformationDetails"))
 
             @textarea(reportForm("mainOffence"), '_label -> "Main offence and dates", 'class -> "wide", 'required -> "true", '_error -> "Enter the main offence and dates")
+
+            <hr />
+
+            @textarea(reportForm("otherOffences"), '_label -> "Other offences and dates (if applicable)", 'class -> "wide")
 
             <hr />
 
@@ -90,10 +95,11 @@
             @inputHidden(reportForm("issueAccommodation"))
             @inputHidden(reportForm("issueEmployment"))
             @inputHidden(reportForm("issueFinance"))
-            @inputHidden(reportForm("issueDrugs"))
-            @inputHidden(reportForm("issueAlcohol"))
+            @inputHidden(reportForm("issueRelationships"))
+            @inputHidden(reportForm("issueSubstanceAbuse"))
             @inputHidden(reportForm("issueHealth"))
             @inputHidden(reportForm("issueBehaviour"))
+            @inputHidden(reportForm("issueOther"))
 
             @inputHidden(reportForm("offenderAssessment"))
 
@@ -106,6 +112,8 @@
 
             @inputHidden(reportForm("reportAuthor"))
             @inputHidden(reportForm("office"))
+            @inputHidden(reportForm("officePhone"))
+            @inputHidden(reportForm("counterSignature"))
             @inputHidden(reportForm("reportDate"))
 
             @pageNumber(5, "Save & continue")

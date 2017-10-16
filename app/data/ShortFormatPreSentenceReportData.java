@@ -102,6 +102,10 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean policeInformationSource;
 
     @OnPage(4)
+    @JsonProperty("SENTENCING_GUIDELINES_SOURCE")
+    private boolean sentencingGuidelinesSource;
+
+    @OnPage(4)
     @JsonProperty("OTHER_INFORMATION_SOURCE")
     private boolean otherInformationSource;
 
@@ -115,6 +119,10 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @RequiredOnPage(5)
     @JsonProperty("MAIN_OFFENCE")
     private String mainOffence;
+
+    @OnPage(5)
+    @JsonProperty("OTHER_OFFENCES")
+    private String otherOffences;
 
     @RequiredOnPage(5)
     @JsonProperty("OFFENCE_SUMMARY")
@@ -147,12 +155,12 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean issueFinance;
 
     @OnPage(7)
-    @JsonProperty("ISSUE_DRUGS")
-    private boolean issueDrugs;
+    @JsonProperty("ISSUE_RELATIONSHIPS")
+    private boolean issueRelationships;
 
     @OnPage(7)
-    @JsonProperty("ISSUE_ALCOHOL")
-    private boolean issueAlcohol;
+    @JsonProperty("DETAILS_SUBSTANCE_ABUSE")
+    private boolean issueSubstanceAbuse;
 
     @OnPage(7)
     @JsonProperty("ISSUE_HEALTH")
@@ -161,6 +169,10 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @OnPage(7)
     @JsonProperty("ISSUE_BEHAVIOUR")
     private boolean issueBehaviour;
+
+    @OnPage(7)
+    @JsonProperty("ISSUE_OTHER")
+    private boolean issueOther;
 
     @RequiredOnPage(7)
     @JsonProperty("OFFENDER_ASSESSMENT")
@@ -201,6 +213,14 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @RequiredOnPage(10)
     @JsonProperty("OFFICE")
     private String office;
+
+    @OnPage(10)
+    @JsonProperty("OFFICE_PHONE")
+    private String officePhone;
+
+    @OnPage(10)
+    @JsonProperty("COUNTER_SIGNATURE")
+    private String counterSignature;
 
     @OnPage(10)
     @JsonProperty("REPORT_DATE")
