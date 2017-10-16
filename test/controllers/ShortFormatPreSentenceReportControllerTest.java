@@ -99,6 +99,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -125,6 +126,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -153,6 +155,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -183,6 +186,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -214,6 +218,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -255,6 +260,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -298,6 +304,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -342,6 +349,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -387,6 +395,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -433,6 +442,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -487,6 +497,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -542,6 +553,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -600,6 +612,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -659,6 +672,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -717,6 +731,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -777,6 +792,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -817,7 +833,6 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
                 put("additionalPreviousSupervision", "Some previous supervision response");
                 put("proposal", "Some proposal");
 
-                put("author", "Arthur Author");
                 put("office", "Sheffield probation office");
                 put("officePhone", "0114 114 114");
                 put("counterSignature", "Some other person");
@@ -841,6 +856,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
             {
                 put("onBehalfOfUser", encrypter.apply("johnsmith"));
                 put("entityId", encrypter.apply("12345"));
+                put("documentId", encrypter.apply("67890"));
                 put("name", encrypter.apply("John Smith"));
                 put("dateOfBirth", encrypter.apply("06/02/1976"));
                 put("age", encrypter.apply("41"));
@@ -881,7 +897,7 @@ public class ShortFormatPreSentenceReportControllerTest extends WithApplication 
                 put("additionalPreviousSupervision", "Some previous supervision response");
                 put("proposal", "Some proposal");
 
-                put("author", "Arthur Author");
+                put("reportAuthor", "Arthur Author");
                 put("office", "Sheffield probation office");
                 put("officePhone", "0114 114 114");
                 put("counterSignature", "Some other person");
