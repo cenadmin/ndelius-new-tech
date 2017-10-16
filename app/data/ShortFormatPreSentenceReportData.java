@@ -159,7 +159,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private boolean issueRelationships;
 
     @OnPage(7)
-    @JsonProperty("DETAILS_SUBSTANCE_ABUSE")
+    @JsonProperty("ISSUE_SUBSTANCE_ABUSE")
     private boolean issueSubstanceAbuse;
 
     @OnPage(7)
@@ -215,14 +215,14 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private String office;
 
     @OnPage(10)
-    @JsonProperty("OFFICE_PHONE")
+    @JsonProperty("_OFFICE_PHONE")
     private String officePhone;
 
     @OnPage(10)
     @JsonProperty("COUNTER_SIGNATURE")
     private String counterSignature;
 
-    @OnPage(10)
+    @RequiredOnPage(10)
     @JsonProperty("REPORT_DATE")
     private String reportDate;
 
