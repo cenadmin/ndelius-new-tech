@@ -197,6 +197,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     @JsonProperty("ADDITIONAL_PREVIOUS_SUPERVISION")
     private String additionalPreviousSupervision;
 
+
     // Page 9
 
     @RequiredOnPage(9)
