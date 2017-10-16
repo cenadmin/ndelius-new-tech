@@ -7,9 +7,9 @@
 
 @implicitField = @{ FieldConstructor(govukElements.f) }
 
-@main("Risk assessment - Short Format Pre Sentence Report") {
+@main("Risk of serious harm - Short Format Pre Sentence Report") {
 
-    <h1 class="heading-xlarge">Risk assessment</h1>
+    <h1 class="heading-xlarge">Risk of serious harm</h1>
 
     <div class="grid-row">
         <div class="column-one-third">
@@ -52,7 +52,9 @@
 
             @inputHidden(reportForm("mainOffence"))
             @inputHidden(reportForm("offenceSummary"))
+
             @inputHidden(reportForm("offenceAnalysis"))
+            @inputHidden(reportForm("patternOfOffending"))
 
             @inputHidden(reportForm("issueAccommodation"))
             @inputHidden(reportForm("issueEmployment"))
@@ -64,36 +66,11 @@
 
             @inputHidden(reportForm("offenderAssessment"))
 
-            @inputHidden(reportForm("patternOfOffending"))
+            @inputHidden(reportForm("previousSupervisionResponse"))
+            @inputHidden(reportForm("additionalPreviousSupervision"))
+            @inputHidden(reportForm("likelihoodOfReOffending"))
 
-            <div class="form-group">
-                <fieldset>
-                    <legend class="margin-bottom medium">
-                        <span class="form-label-bold">Response to previous supervision</span>
-                        <span class="form-hint">Include their compliance with any Youth Offending Supervision Orders</span>
-                    </legend>
-
-                    @inputRadioGroup(
-                        reportForm("previousSupervisionResponse"),
-                        options(
-                            "Good" -> "Good",
-                            "Satisfactory" -> "Satisfactory",
-                            "Poor" -> "Poor",
-                            "N/A" -> "N/A"
-                        )
-                    )
-                </fieldset>
-            </div>
-
-            <hr noshade />
-
-            @textarea(reportForm("additionalPreviousSupervision"), '_label -> "Add additional details on previous supervision", '_help -> "If applicable", 'class -> "wide", Symbol("data-limit") -> "300", Symbol("data-target") -> "supervision-limit")
-
-            <hr noshade />
-
-            @textarea(reportForm("likelihoodOfReOffending"), '_label -> "Likelihood of reoffending", 'class -> "wide", 'required -> "true")
-
-            @inputHidden(reportForm("riskOfSeriousHarm"))
+            @textarea(reportForm("riskOfSeriousHarm"), '_label -> "Detail the risk of serious harm", '_help -> "Indicate tools used, what is the risk, at what level and who to. Also describe what will increase or decrease the risk.", 'class -> "wide", Symbol("data-limit") -> "1000", Symbol("data-target") -> "risk-limit", 'required -> "true")
 
             @inputHidden(reportForm("proposal"))
 

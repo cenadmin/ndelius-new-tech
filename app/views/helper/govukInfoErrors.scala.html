@@ -3,7 +3,18 @@
 @for(info <- elements.infos) {
     <span class="form-hint">@info</span>
 }
-@for(error <- elements.errors) {
-    <span class="error-message" aria-hidden="true">@error</span>
-    <span id="@elements.id-error" role="alert" class="visually-hidden">Please enter @elements.label</span>
+@if(elements.args.get('_hint)) {
+    <a href="javascript:void(0)" class="expand-content" data-target="hint_@elements.id">What to include</a>
+    <div id="hint_@elements.id" class="js-hidden">
+        <div class="panel panel-border-narrow">
+        @elements.args.get('_hint)
+        </div>
+        <div>&nbsp;</div>
+    </div>
+}
+@if(!elements.args.get('_noError) && !elements.args.get('_errorBarOnly)) {
+    @for(error <- elements.errors) {
+        <span class="error-message" aria-hidden="true">@if(elements.args.get('_error)){@elements.args.get('_error)}@if(!elements.args.get('_error)){@error}</span>
+        <span id="@elements.id-error" role="alert" class="visually-hidden">Please enter @elements.label</span>
+    }
 }
