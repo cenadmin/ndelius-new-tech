@@ -216,7 +216,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private String office;
 
     @OnPage(10)
-    @JsonProperty("_OFFICE_PHONE")
+    @JsonProperty("PHONE")
     private String officePhone;
 
     @OnPage(10)
