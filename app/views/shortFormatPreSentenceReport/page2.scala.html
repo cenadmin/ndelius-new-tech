@@ -37,14 +37,14 @@
                 @textarea(reportForm("address"), '_label -> "Address", 'class -> "wide classic", '_error -> "Enter the offender’s address", 'placeholder -> "")
             }
 
-            @readOnlyField(reportForm("crn"), "Delius CRN", encrypter)
-
             @if(Boolean.parseBoolean(reportForm("pncSupplied").getValue.orElse("false"))) {
                 @readOnlyField(reportForm("pnc"), "PNC ID", encrypter)
             }
             @if(!Boolean.parseBoolean(reportForm("pncSupplied").getValue.orElse("false"))) {
                 @inputText(reportForm("pnc"), '_label -> "PNC ID", '_help -> "If available in CPS documentation", 'class -> "half-width")
             }
+
+            @readOnlyField(reportForm("crn"), "Delius CRN", encrypter)
 
             @inputHidden(reportForm("pncSupplied"))
             @inputHidden(reportForm("addressSupplied"))
