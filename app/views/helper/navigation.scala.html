@@ -14,7 +14,7 @@
 
 <nav class="js-stick-at-top-when-scrolling">
 
-    @if(current < entries.length) {
+    @if(current <= entries.length) {
         <a id="exitLink" href="javascript:void(0);" class="bold font-xsmall no-underline no-margin-top no-margin-bottom">Save a draft of this report</a>
         <div class="margin-bottom medium"></div>
     }
@@ -24,7 +24,7 @@
     <span class="display-block margin-top"></span>
 
     @for((entry, index) <- entries.zipWithIndex) {
-        @navigationEntry(index + 1, entry)
+        @navigationEntry(index + 2, entry)
     }
 
 </nav>
