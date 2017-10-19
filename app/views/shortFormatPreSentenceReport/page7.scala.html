@@ -81,7 +81,7 @@
 
                 <hr />
 
-                @textarea(reportForm("offenderAssessment"), '_label -> "Provide a brief assessment covering the all areas", '_help -> "These are the areas you have highlighted as issues above", 'class -> "wide", Symbol("data-limit") -> "4000", Symbol("data-target") -> "assessment-limit", 'required -> "true")
+                @textarea(reportForm("offenderAssessment"), '_label -> "Provide a brief assessment covering the all areas", '_help -> "These are the areas you have highlighted as issues above", '_error -> "You must provide a brief assessment", 'class -> "wide", Symbol("data-limit") -> "4000", Symbol("data-target") -> "assessment-limit", 'required -> "true")
 
                 @inputHidden(reportForm("likelihoodOfReOffending"))
                 @inputHidden(reportForm("riskOfSeriousHarm"))

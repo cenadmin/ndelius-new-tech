@@ -29,19 +29,21 @@
             @readOnlyField(reportForm("name"), "Full name", encrypter)
             @readOnlyField(reportForm("dateOfBirth"), "Date of birth", encrypter)
             @readOnlyField(reportForm("age"), "Age", encrypter)
-            @readOnlyField(reportForm("crn"), "Delius CRN", encrypter)
+
             @if(Boolean.parseBoolean(reportForm("addressSupplied").getValue.orElse("false"))) {
                 @readOnlyField(reportForm("address"), "Address", encrypter)
             }
+            @if(!Boolean.parseBoolean(reportForm("addressSupplied").getValue.orElse("false"))) {
+                @textarea(reportForm("address"), '_label -> "Address", 'class -> "wide classic", '_error -> "Enter the offender’s address", 'placeholder -> "")
+            }
+
+            @readOnlyField(reportForm("crn"), "Delius CRN", encrypter)
+
             @if(Boolean.parseBoolean(reportForm("pncSupplied").getValue.orElse("false"))) {
                 @readOnlyField(reportForm("pnc"), "PNC ID", encrypter)
             }
-
-            @if(!Boolean.parseBoolean(reportForm("addressSupplied").getValue.orElse("false"))) {
-              @inputText(reportForm("address"), '_label -> "Address")
-            }
             @if(!Boolean.parseBoolean(reportForm("pncSupplied").getValue.orElse("false"))) {
-                @inputText(reportForm("pnc"), '_label -> "PNC ID (if available)", 'class -> "half-width")
+                @inputText(reportForm("pnc"), '_label -> "PNC ID", '_help -> "If available in CPS documentation", 'class -> "half-width")
             }
 
             @inputHidden(reportForm("pncSupplied"))

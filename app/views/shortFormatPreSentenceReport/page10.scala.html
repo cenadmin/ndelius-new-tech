@@ -75,9 +75,9 @@
 
             @inputHidden(reportForm("proposal"))
 
-            @inputText(reportForm("reportAuthor"), '_label -> "Report author", 'required -> "true")
-            @inputText(reportForm("office"), '_label -> "Office", 'required -> "true")
-            @inputText(reportForm("reportDate"), '_label -> "Completion date", '_help -> "For example: 28/06/2017", 'class -> "date-picker", 'required -> "true")
+            @inputText(reportForm("reportAuthor"), '_label -> "Report author", 'required -> "true", '_error -> "Enter the report author")
+            @inputText(reportForm("office"), '_label -> "Office", 'required -> "true", '_error -> "Enter the office")
+            @inputText(reportForm("reportDate"), '_label -> "Completion date", '_help -> "For example: 28/06/2017", 'class -> "date-picker")
 
             @pageNumber(10, Some("Submit and view your report"))
         }

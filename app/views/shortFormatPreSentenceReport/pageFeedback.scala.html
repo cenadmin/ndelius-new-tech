@@ -7,9 +7,9 @@
 
 @implicitField = @{ FieldConstructor(govukElements.f) }
 
-@main("Start your report - Short Format Pre Sentence Report") {
+@main("Give feedback - Short Format Pre Sentence Report", false) {
 
-    <h1 class="heading-xlarge">Feedback</h1>
+    <h1 class="heading-xlarge">Give feedback</h1>
 
     <div class="grid-row">
         <div class="column-one-third">
@@ -18,12 +18,6 @@
 
         </div>
         <div class="column-two-thirds">
-
-            <p class="lede">Short Format Pre-Sentence Report</p>
-
-            <p>Your feedback will help us to improve this service.</p>
-
-            <p>Once submitted you will be returned to where you left off in the report.</p>
 
             @helper.form(action = relative(routes.ShortFormatPreSentenceReportController.wizardPost()), 'id -> "ndForm", 'novalidate -> "") {
                 @CSRF.formField
@@ -87,7 +81,7 @@
                 <input type="hidden" id="jumpNumber" name="jumpNumber" value="@reportForm("pageNumber").getValue.orElse("")"/>
                 @inputHidden(reportForm("pageNumber"))
 
-                @textarea(reportForm("feedback"), '_label -> "Submit your feedback", 'class -> "wide")
+                @textarea(reportForm("feedback"), '_label -> "How could we improve this service?", 'class -> "wide")
 
                 <input class="button button-start" type="submit" value="Submit your feedback"/>
             }
