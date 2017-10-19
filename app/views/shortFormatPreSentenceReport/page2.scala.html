@@ -34,7 +34,7 @@
                 @readOnlyField(reportForm("address"), "Address", encrypter)
             }
             @if(!Boolean.parseBoolean(reportForm("addressSupplied").getValue.orElse("false"))) {
-                @textarea(reportForm("address"), '_label -> "Address", 'class -> "wide classic", '_error -> "Enter the offender’s address", 'placeholder -> "")
+                @textarea(reportForm("address"), '_label -> "Address", 'class -> "wide classic", 'placeholder -> "")
             }
 
             @if(Boolean.parseBoolean(reportForm("pncSupplied").getValue.orElse("false"))) {

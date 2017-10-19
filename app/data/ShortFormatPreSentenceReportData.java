@@ -36,7 +36,7 @@ public class ShortFormatPreSentenceReportData extends ReportGeneratorWizardData 
     private Integer age;
 
     @Encrypted
-    @RequiredOnPage(2)
+    @OnPage(2)
     @JsonProperty("_ADDRESS_")
     private String address;
 
