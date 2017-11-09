@@ -9,7 +9,7 @@
 
 @main("Start your report - Short Format Pre Sentence Report") {
 
-    <h1 class="heading-xlarge">Feedback</h1>
+    <h1 class="heading-xlarge">Give feedback</h1>
 
     <div class="grid-row">
         <div class="column-one-third">
@@ -18,12 +18,6 @@
 
         </div>
         <div class="column-two-thirds">
-
-            <p class="lede">Short Format Pre-Sentence Report</p>
-
-            <p>Your feedback will help us to improve this service.</p>
-
-            <p>Once submitted you will be returned to where you left off in the report.</p>
 
             @helper.form(action = relative(routes.ShortFormatPreSentenceReportController.wizardPost()), 'id -> "ndForm", 'novalidate -> "") {
                 @CSRF.formField
@@ -87,9 +81,32 @@
                 <input type="hidden" id="jumpNumber" name="jumpNumber" value="@reportForm("pageNumber").getValue.orElse("")"/>
                 @inputHidden(reportForm("pageNumber"))
 
-                @textarea(reportForm("feedback"), '_label -> "Submit your feedback", 'class -> "wide")
+                <fieldset>
 
-                <input class="button button-start" type="submit" value="Submit your feedback"/>
+                    <legend>
+                        <span class="form-label-bold">Overall, how did you feel about the Short Format Pre-sentence Report service you used today?</span>
+                    </legend>
+
+                    <div>&nbsp;</div>
+
+                    @inputRadioGroup(
+                        reportForm("rating"),
+                        options(
+                            "5" -> "Very satisfied",
+                            "4" -> "Satisfied",
+                            "3" -> "Neither satisfied or dissatisfied",
+                            "2" -> "Dissatisfied",
+                            "1" -> "Very dissatisfied"
+                        )
+                    )
+
+                </fieldset>
+
+                <hr class="no-margin-top" />
+
+                @textarea(reportForm("feedback"), '_label -> "How could we improve this service?", 'class -> "wide")
+
+                <input class="button" type="submit" value="Submit feedback"/>
             }
 
         </div>
