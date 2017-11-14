@@ -35,6 +35,8 @@
         </div>
         <div class="column-two-thirds">
 
+        @formErrors(reportForm.errors.size() > 0)
+
         @helper.form(action = relative(routes.ShortFormatPreSentenceReportController.wizardPost()), 'id -> "ndForm", 'novalidate -> "") {
             @CSRF.formField
 
@@ -91,9 +93,9 @@
 
             <hr />
 
-            <div class="form-group">
+            <div class="form-group@if(reportForm("previousSupervisionResponse").errors.size() > 0){ form-group-error}">
                 <fieldset>
-                    <legend class="margin-bottom medium">
+                    <legend>
                         <span class="form-label-bold">Response to previous supervision</span>
                         <span class="form-hint">Include their compliance with any Youth Offending Supervision Orders</span>
                     </legend>
@@ -106,6 +108,7 @@
                             "Poor" -> "Poor",
                             "N/A" -> "Not applicable"
                         ),
+                        '_error -> "Tell us the response to previous supervision",
                         Symbol("data-target") -> "supervision-details",
                         Symbol("data-ignore") -> "N/A"
                     )

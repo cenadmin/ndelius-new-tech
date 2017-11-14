@@ -10,13 +10,13 @@
   <div class="clearfix"></div>
   <div class="margin-top"></div>
 } else if(elements.input.body.contains("type=\"radio\"")) {
-    <div class="form-group@if(elements.hasErrors) { form-group-error}">
+    @govukInfoErrors(elements)
+    <div class="margin-top medium">
         @htmlLines.init.tail.grouped(2).map(_.mkString).map { radioAndLabel =>
             <div class="multiple-choice" @for((key, value) <- elements.args if !key.name.startsWith("_")) { @{key.name}=@{value} }>
                 @Html(radioAndLabel.replace("checked=\"checked\"", "checked=\"checked\" aria-checked=\"checked\""))
             </div>
         }
-        @govukInfoErrors(elements)
     </div>
 } else {
   <div class="form-group@if(elements.hasErrors) { form-group-error}">

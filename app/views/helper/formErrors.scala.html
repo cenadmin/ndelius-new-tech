@@ -1,0 +1,11 @@
+@(error: Boolean)
+
+@if(error) {
+    <div class="error-summary no-margin-top">
+        <h2 class="heading-medium no-margin-top">You need to fix the errors on this page before continuing</h2>
+
+        <p>See highlighted errors below</p>
+
+        <div class="form-errors"></div>
+    </div>
+}

@@ -20,7 +20,7 @@
         function showHint(parent, child) {
             child.hasClass('js-hidden') ? child.removeClass('js-hidden') : child.addClass('js-hidden');
 
-            if(child.hasClass('js-hidden')) {
+            if (child.hasClass('js-hidden')) {
                 parent.removeClass('active');
                 parent.attr('aria-expanded', 'false');
                 child.attr('aria-hidden', 'true');
@@ -43,7 +43,7 @@
 
             if (limit && current > 0) {
                 messageHolder.removeClass('js-hidden');
-                messageTarget.text(limit + " recommended characters, you have used " + current);
+                messageTarget.text(limit + ' recommended characters, you have used ' + current);
             } else {
                 messageHolder.addClass('js-hidden');
             }
@@ -97,7 +97,7 @@
             var form = $('form');
 
             if (form.length) {
-                var data =_.map(form.serializeArray(), function(entry) {
+                var data = _.map(form.serializeArray(), function (entry) {
 
                     if (entry.name === 'jumpNumber') {
                         entry.value = 0;
@@ -109,11 +109,21 @@
                     type: 'POST',
                     url: form.attr('action'),
                     data: data,
-                    complete: function() { setTimeout(autoSave, 15000); }
+                    complete: function () {
+                        setTimeout(autoSave, 15000);
+                    }
                 });
             }
         }
+
         autoSave();
+
+        /**
+         *
+         */
+        $('.error-message', $('form')).each(function (i, elem) {
+            $('.form-errors').append('<p class="error-message">' + elem.innerHTML + '</p>');
+        });
 
         /**
          *
@@ -122,7 +132,7 @@
             var parent = $(this),
                 child = $('#' + elem.getAttribute('data-target'));
             parent.attr('aria-controls', elem.getAttribute('data-target'));
-            parent.click(function() {
+            parent.click(function () {
                 showHint(parent, child)
             });
         });

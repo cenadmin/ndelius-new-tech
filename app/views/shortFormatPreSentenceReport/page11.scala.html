@@ -21,6 +21,8 @@
         </div>
         <div class="column-two-thirds">
 
+        @formErrors(reportForm.errors.size() > 0)
+
         @helper.form(action = relative(routes.ShortFormatPreSentenceReportController.wizardPost()), 'id -> "ndForm", 'novalidate -> "") {
             @CSRF.formField
 
