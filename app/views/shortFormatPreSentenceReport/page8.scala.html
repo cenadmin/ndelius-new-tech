@@ -93,7 +93,7 @@
 
             <hr />
 
-            <div class="form-group@if(reportForm("previousSupervisionResponse").errors.size() > 0){ form-group-error}">
+            <div class="form-group@if(reportForm("previousSupervisionResponse").error){ form-group-error}">
                 <fieldset>
                     <legend>
                         <span class="form-label-bold">Response to previous supervision</span>
@@ -114,8 +114,10 @@
                     )
                 </fieldset>
 
-                <div class="panel panel-border-narrow js-hidden" id="supervision-details">
-                    @textarea(reportForm("additionalPreviousSupervision"), '_label -> "Add additional details on previous supervision (if applicable)", 'class -> "wide", Symbol("data-limit") -> "1000")
+                <div class="margin-top js-hidden" id="supervision-details">
+                    <div class="panel panel-border-narrow">
+                        @textarea(reportForm("additionalPreviousSupervision"), '_label -> "Add additional details on previous supervision (if applicable)", 'class -> "wide", Symbol("data-limit") -> "1000")
+                    </div>
                 </div>
             </div>
 

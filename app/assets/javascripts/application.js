@@ -122,7 +122,7 @@
          *
          */
         $('.error-message', $('form')).each(function (i, elem) {
-            $('.form-errors').append('<p class="error-message">' + elem.innerHTML + '</p>');
+            $('.error-summary-list').append('<li><a href="#' + $(elem).attr('id') + '" class="error-message">' + elem.innerHTML + '</a></li>');
         });
 
         /**

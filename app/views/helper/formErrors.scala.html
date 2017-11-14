@@ -1,11 +1,14 @@
 @(error: Boolean)
 
 @if(error) {
-    <div class="error-summary no-margin-top">
-        <h2 class="heading-medium no-margin-top">You need to fix the errors on this page before continuing</h2>
+    <div class="error-summary no-margin-top" role="alert" aria-labelledby="error-summary-heading" tabindex="-1">
+        <h2 class="heading-medium no-margin-top" id="error-summary-heading">You need to fix the errors on this page before continuing</h2>
 
         <p>See highlighted errors below</p>
 
-        <div class="form-errors"></div>
+        <ul class="error-summary-list">
+            <!-- POPULATED BY JAVASCRIPT -->
+        </ul>
     </div>
+    <div class="margin-bottom">&nbsp;</div>
 }
